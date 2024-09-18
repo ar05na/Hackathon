@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Connect - Welcome</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: white;
+            color: black;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 50px;
+            background-color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            width: 180px;
+            height: auto;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+            font-weight: 600;
+            font-size: 1.1em;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #1e90ff;
+            transition: width .3s;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Banner with Quotation */
+        .banner {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        .banner img {
+            width: 100%;
+            height: auto;
+        }
+
+        .banner .quote {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* About Us Section */
+        #about {
+            background-color: #fff9c4; /* Light yellow */
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        #about h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #about p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+        }
+
+        /* Apply Now Section */
+        #apply-now {
+            background-color: #1e90ff; /* Blue */
+            color: white;
+            padding: 80px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .apply-section {
+            flex: 1 1 300px;
+            margin: 20px;
+            background-color: white;
+            color: black;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform .3s;
+        }
+
+        .apply-section:hover {
+            transform: translateY(-10px);
+        }
+
+        .apply-section img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .apply-section h3 {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+
+        .apply-section p {
+            font-size: 1.1em;
+            padding: 0 20px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .apply-section a {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 12px 30px;
+            background-color: #1e90ff;
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: background-color .3s;
+        }
+
+        .apply-section a:hover {
+            background-color: #104e8b;
+        }
+
+        /* Quotes Section */
+        .quotes-section {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 80px 0;
+        }
+
+        .quote {
+            flex: 1 1 500px;
+            padding: 60px 40px;
+            color: white;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .quote.blue {
+            background-color: #1e90ff;
+        }
+
+        .quote.yellow {
+            background-color: #fff9c4;
+            color: #333;
+        }
+
+        /* FAQs Section */
+        #faqs {
+            background-color: white;
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #faqs h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #333;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+        }
+
+        .faq-question {
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            padding-right: 30px;
+        }
+
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            font-size: 1.5em;
+            transition: transform .3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .5s ease;
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+
+        footer p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .subscribe-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .subscribe-form input[type="email"] {
+            padding: 12px;
+            font-size: 1em;
+            border: 2px solid #1e90ff;
+            border-radius: 5px;
+            width: 300px;
+            outline: none;
+        }
+
+        .subscribe-form button {
+            padding: 12px 25px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color .3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #104e8b;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .apply-now {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .quotes-section {
+                flex-direction: column;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+
+            nav {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="logo">
+                <img src="usersigin/images/logo.png" alt="Mentor Connect Logo">
+            </div>
+            <nav>
+                <a href="#about">About Us</a>
+                <a href="#faqs">FAQs</a>
+                <a href="#apply-now">Apply Now</a>
+            </nav>
+        </header>
+
+        <section class="banner">
+            <img src="usersigin/images/_b2d0d520-dab2-4f8d-b094-ee556f4eb736.jpeg" alt="Mentor Connect Banner">
+            <div class="quote">"Connecting students with career guidance mentors for a brighter future."</div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about">
+            <h2>About Mentor Connect</h2>
+            <p>
+                Mentor Connect bridges the gap between individuals seeking career guidance and experienced professionals across various industries. Our platform enables mentees of all ages to connect with mentors who can provide personalized advice, support, and insights to help navigate and advance their careers effectively.
+            </p>
+        </section>
+
+        <!-- Apply Now Section -->
+        <section id="apply-now">
+            <div class="apply-section">
+                <img src="usersigin/images/mentor.jpeg" alt="Mentor">
+                <h3>Become as mentor</h3>
+                <p>
+                    "Share your expertise and experience to shape the future of aspiring professionals.">
+                    <a href="C:\Users\guptt\OneDrive\Documents\Desktop\mentor_connect\public\mentorsignin.html">Mentor Login / Sign Up</a>
+            </div>
+            <div class="apply-section">
+                <img src="usersigin/images/_582dd97e-9411-433e-93fc-02d310791604.jpeg" alt="Mentee">
+                <h3>Find a mentor</h3>
+                <p>
+                    "Gain valuable insights and guidance from industry experts. Connect with mentors to accelerate your career growth."
+                </p>
+                <a href="public/mentorsignin.html">Mentee Login / Sign Up</a>
+            </div>
+        </section>
+
+        <!-- Quotes Section -->
+        <section class="quotes-section">
+            <div class="quote blue">
+                "Mentorship is the bridge between dreams and achievement."
+            </div>
+            <div class="quote yellow">
+                "A mentor empowers you to see a possible future and believe it can be obtained."
+            </div>
+        </section>
+
+        <!-- FAQs Section -->
+        <section id="faqs">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I connect with a mentor?</div>
+                <div class="faq-answer">
+                    First, sign up as a mentee by creating an account. Then, browse through our list of mentors and select one that aligns with your career goals and interests. You can then schedule sessions and start your mentorship journey.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Is Mentor Connect free to use?</div>
+                <div class="faq-answer">
+                    yes it is free
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I become a mentor?</div>
+                <div class="faq-answer">
+                    Absolutely! If you have professional experience and a desire to guide others, you can sign up as a mentor. Fill out your profile detailing your expertise and availability, and start connecting with mentees seeking your guidance.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How are mentorship sessions conducted?</div>
+                <div class="faq-answer">
+                    Mentorship sessions can be conducted through various methods such as video calls, phone calls, or in-person meetings, depending on mutual agreement between the mentor and mentee. Our platform facilitates scheduling and communication to make the process seamless.
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>Subscribe to our newsletter for the latest updates and mentoring opportunities:</p>
+            <form class="subscribe-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </footer>
+    </div>
+
+    <!-- JavaScript for FAQ Toggle -->
+    <script>
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

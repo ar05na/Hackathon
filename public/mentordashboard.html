@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #1e90ff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            margin: 20px;
+        }
+
+        .sidebar {
+            width: 20%;
+            background-color: #2f4f4f;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+        }
+
+        .sidebar a {
+            color: white;
+            display: block;
+            padding: 10px 0;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background-color: #4682b4;
+        }
+
+        .content {
+            width: 80%;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #4169e1;
+        }
+
+        .logout-btn {
+            margin-top: 20px;
+            background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Mentor Dashboard</h1>
+        <p>Welcome, [Mentor Name]</p>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <a href="#">Classes Conducted</a>
+            <a href="#">Upcoming Classes</a>
+            <a href="#">Schedule Management</a>
+            <a href="#">Provide Feedback</a>
+            <a href="#" class="logout-btn">Logout</a>
+        </div>
+
+        <div class="content">
+            <div class="card">
+                <h3>Classes Conducted</h3>
+                <p>Total Classes Conducted: 10</p>
+            </div>
+
+            <div class="card">
+                <h3>Upcoming Classes</h3>
+                <p>You have 2 upcoming classes:</p>
+                <ul>
+                    <li>Class 1: Monday, 10 AM - Topic: Career Guidance</li>
+                    <li>Class 2: Wednesday, 2 PM - Topic: Resume Building</li>
+                </ul>
+                <a href="#" class="btn">View Schedule</a>
+            </div>
+
+            <div class="card">
+                <h3>Provide Feedback</h3>
+                <form action="/mentor/feedback" method="POST">
+                    <label for="feedback">Leave feedback for a recent session:</label>
+                    <textarea id="feedback" name="feedback" rows="4" cols="50" placeholder="Enter feedback here..."></textarea><br>
+                    <button type="submit" class="btn">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
